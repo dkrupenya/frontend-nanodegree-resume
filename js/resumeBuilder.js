@@ -10,7 +10,7 @@ var bio = {
         location: "Saint-Petersburg",
         email: "dkrupenya@gmail.com"
     },
-    picUrl: "http://cs403519.vk.me/v403519261/b0f2/eTwwywaVb2Q.jpg",
+    bioPic: "http://cs403519.vk.me/v403519261/b0f2/eTwwywaVb2Q.jpg",
     welcome: "Hello, my friend",
     skills: ["HTML5", "javaScript", "MongoDB", "MeteorJS", "ReactJS", "GIT"]
 };
@@ -53,7 +53,7 @@ var projects = {
 };
 //      Education object
 var education = {
-    scools: [
+    schools: [
         {
             "schoolName": "School №222",
             "degree": "Certificate of lower secondary education",
