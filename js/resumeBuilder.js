@@ -1,3 +1,4 @@
+//     BIO object
 var bio = {
     name: "Dmitry Krupenya",
     role: "Web Developer",
@@ -13,19 +14,89 @@ var bio = {
     welcome: "Hello, my friend",
     skills: ["HTML5", "javaScript", "MongoDB", "MeteorJS", "ReactJS", "GIT"]
 };
-
-var work = {};
-work.jobPosition = "Researcher";
-work.employer = "SPbSU";
-work.yearsWorked = "10";
-work.employerCyty = "Saint-Petersburg";
-work.description = "inorganic chemistry";
-
+//     Work object
+var work = {
+    jobs: [
+        {   "jobPosition" : "Researcher",
+            "employer" : "SPbSU",
+            "yearsWorked" : "10",
+            "employerCyty" : "Saint-Petersburg",
+            "description" : "inorganic chemistry"
+        },
+        {   "jobPosition" : "Researcher",
+            "employer" : "SPbSU",
+            "yearsWorked" : "10",
+            "employerCyty" : "Saint-Petersburg",
+            "description" : "inorganic chemistry"
+        }
+    ]
+};
+//      Projects
+var projects = {
+    projects: [
+        {
+            title: "Front-End Nanodegree Project 1",
+            dates: "June 2015",
+            description: "my first HTML page",
+            images: [   "/img/194x148.jpg",
+                        "/img/194x148.jpg"
+                    ]
+        },
+        {   title: "Front-End Nanodegree Project 1",
+            dates: "June 2015",
+            description: "my first HTML page",
+            images: [   "/img/194x148.jpg",
+                        "/img/194x148.jpg"
+                    ]
+        }
+    ]
+};
+//      Education object
 var education = {
-    "schoolName": "222",
-    "degree": "Certificate of secondary education",
-    "years": "1984-1994",
-    "schoolCity": "Saint-Petersburg"
+    scools: [
+        {
+            "schoolName": "School №222",
+            "degree": "Certificate of lower secondary education",
+            "years": "1984-1992",
+            "schoolCity": "Saint-Petersburg",
+            "url": "http://petrischule.spb.ru/"
+        },
+        {
+            "schoolName": "Academic high school at SPbSU",
+            "degree": "Certificate of secondary education",
+            "years": "1992-1994",
+            "schoolCity": "Saint-Petersburg",
+            "url": "http://agym.spbu.ru/"
+        },
+        {
+            "schoolName": "Saint-Petersburg State University",
+            "degree": "Master degree",
+            "years": "1994-2002",
+            "schoolCity": "Saint-Petersburg",
+            "url": "http://spbu.ru/"
+        },
+        {
+            "schoolName": "Saint-Petersburg State University",
+            "degree": "PhD in Chemistry",
+            "years": "2002-2005",
+            "schoolCity": "Saint-Petersburg",
+            "url": "http://spbu.ru/"
+        }
+    ],
+    onlineCourses :[
+        {
+            title: "Front-End Nanodegree",
+            school: "Udacity",
+            dates: "June 2015 - ",
+            url: ""
+        },
+        {
+            title: "Front-End Nanodegree",
+            school: "Udacity",
+            dates: "June 2015 - ",
+            url: ""
+        }
+    ]
 };
 
 
@@ -60,15 +131,3 @@ $("#education").append(HTMLschoolStart)
     .append(HTMLschoolDegree.replace("%data%", education.degree))
     .append(HTMLschoolDates.replace("%data%", education.years))
     .append(HTMLschoolLocation.replace("%data%", education.schoolCity));
-
-
-
-
-
-
-
-
-
-function upperCaseFirstLetter(str) {
-    return str.slice(0,1).toUpperCase() + str.slice(1);
-}
