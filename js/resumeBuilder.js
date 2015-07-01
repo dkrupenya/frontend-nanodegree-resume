@@ -99,7 +99,15 @@ var education = {
     ]
 };
 
+$("main").append(internationalizeButton);
 
+function inName(name) {
+    var names = name.trim().split(" ");
+    names[0] = names[0].slice(0,1).toUpperCase() +
+                names[0].slice(1).toLowerCase();
+    names[1] = names[1].toUpperCase();
+    return names.join(" ");
+}
 
 $("#header").prepend(HTMLheaderRole.replace("%data%", bio.role))
     .prepend(HTMLheaderName.replace("%data%", bio.name))
@@ -126,15 +134,22 @@ if (bio.skills.length > 0) {
 
 }
 
-for (job in work.jobs) {
-    $("#workExperience").append(HTMLworkStart)
-        .append(HTMLworkEmployer.replace("%data%",work.jobs[job].employer))
-        .append(HTMLworkTitle.replace("%data%", work.jobs[job].jobPosition))
-        .append(HTMLworkDates.replace("%data%", work.jobs[job].yearsWorked))
-        .append(HTMLworkLocation.replace("%data%", work.jobs[job].employerCyty))
-        .append(HTMLworkDescription.replace("%data%", work.jobs[job].description));
+
+function displayWork() {
+    for (job in work.jobs) {
+        $("#workExperience").append(HTMLworkStart)
+            .append(HTMLworkEmployer.replace("%data%",work.jobs[job].employer))
+            .append(HTMLworkTitle.replace("%data%", work.jobs[job].jobPosition))
+            .append(HTMLworkDates.replace("%data%", work.jobs[job].yearsWorked))
+            .append(HTMLworkLocation.replace("%data%", work.jobs[job].employerCyty))
+            .append(HTMLworkDescription.replace("%data%", work.jobs[job].description));
+    }
 }
 
+$(document).click(function(loc) {
+    // your code goes here
+    console.log(loc.pageX, loc.pageY);
+});
 
 
 $("#education").append(HTMLschoolStart)
