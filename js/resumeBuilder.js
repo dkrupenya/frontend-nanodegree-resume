@@ -57,7 +57,7 @@ var projects = {
                 .append(HTMLprojectDates.replace("%data%", this.projects[project].dates))
                 .append(HTMLprojectDescription.replace("%data%", this.projects[project].description));
             for (img in this.projects[project].images) {
-                $("#projects").append(HTMLprojectImage.replace("%data%", this.projects[project].images[img]);
+                $("#projects").append(HTMLprojectImage.replace("%data%", this.projects[project].images[img]));
             }
         }
     }
@@ -132,7 +132,7 @@ $("#header").prepend(HTMLheaderRole.replace("%data%", bio.role))
     .append(HTMLlocation.replace("%data%", bio.contacts.location))
 
     .append(HTMLbioPic.replace("%data%", bio.picUrl))
-    .append(HTMLwelcomeMsg.replace("%data%", bio.welcome))
+    .append(HTMLwelcomeMsg.replace("%data%", bio.welcome));
 
 // Lesson 2 Flow control
 
@@ -145,7 +145,6 @@ if (bio.skills.length > 0) {
 
 }
 
-
 function displayWork() {
     for (job in work.jobs) {
         $("#workExperience").append(HTMLworkStart)
@@ -156,6 +155,8 @@ function displayWork() {
             .append(HTMLworkDescription.replace("%data%", work.jobs[job].description));
     }
 }
+
+projects.display();
 
 $(document).click(function(loc) {
     // your code goes here
