@@ -49,7 +49,18 @@ var projects = {
                         "/img/194x148.jpg"
                     ]
         }
-    ]
+    ],
+    display: function() {
+        for (project in this.projects) {
+            $("#projects").append(HTMLprojectStart)
+                .append(HTMLprojectTitle.replace("%data%", this.projects[project].title))
+                .append(HTMLprojectDates.replace("%data%", this.projects[project].dates))
+                .append(HTMLprojectDescription.replace("%data%", this.projects[project].description));
+            for (img in this.projects[project].images) {
+                $("#projects").append(HTMLprojectImage.replace("%data%", this.projects[project].images[img]);
+            }
+        }
+    }
 };
 //      Education object
 var education = {
