@@ -115,16 +115,27 @@ $("#header").prepend(HTMLheaderRole.replace("%data%", bio.role))
     .append(HTMLbioPic.replace("%data%", bio.picUrl))
     .append(HTMLwelcomeMsg.replace("%data%", bio.welcome))
 
-    .append(HTMLskillsStart)
-    .append(HTMLskills.replace("%data%", bio.skills));
+// Lesson 2 Flow control
+
+if (bio.skills.length > 0) {
+    $("#header").append(HTMLskillsStart);
+    for (skill in bio.skills) {
+        $("#skills").append(HTMLskills.replace("%data%", bio.skills[skill]));
+    }
 
 
-$("#workExperience").append(HTMLworkStart)
-    .append(HTMLworkEmployer.replace("%data%", work["employer"]))
-    .append(HTMLworkTitle.replace("%data%", work["jobPosition"]))
-    .append(HTMLworkDates.replace("%data%", work["yearsWorked"]))
-    .append(HTMLworkLocation.replace("%data%", work["employerCyty"]))
-    .append(HTMLworkDescription.replace("%data%", work["description"]));
+}
+
+for (job in work.jobs) {
+    $("#workExperience").append(HTMLworkStart)
+        .append(HTMLworkEmployer.replace("%data%",work.jobs[job].employer))
+        .append(HTMLworkTitle.replace("%data%", work.jobs[job].jobPosition))
+        .append(HTMLworkDates.replace("%data%", work.jobs[job].yearsWorked))
+        .append(HTMLworkLocation.replace("%data%", work.jobs[job].employerCyty))
+        .append(HTMLworkDescription.replace("%data%", work.jobs[job].description));
+}
+
+
 
 $("#education").append(HTMLschoolStart)
     .append(HTMLschoolName.replace("%data%", education.schoolName))
