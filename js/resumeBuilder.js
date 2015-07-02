@@ -70,8 +70,8 @@ var projects = {
                     ]
         },
         {   title: "Front-End Nanodegree Project 2",
-            dates: "June 2015",
-            description: "my first HTML page",
+            dates: "July 2015",
+            description: "my resume (Javascript, jQuery, Google Maps)",
             images: [   "images/p2.png"
             ]
         }
@@ -126,11 +126,24 @@ var education = {
     ],
     onlineCourses :[
         {
-            title: "Front-End Nanodegree",
-            school: "Udacity",
-            dates: "June 2015 - ",
+            title: "Heterogeneous Parallel Programming",
+            school: "Coursera.org, University of Illinois",
+            dates: "2013",
             url: ""
         },
+        {
+            title: "M101JS: MongoDB for Node.js Developer",
+            school: "MongoDB University",
+            dates: "January 2015",
+            url: "http://education.mongodb.com/downloads/certificates/4b2f70a06cb84ed1886c1cb0ed5ddddb/Certificate.pdf?_ga=1.189629419.1980790262.1422464195"
+        },
+        {
+            title: "The Data Scientist’s Toolbox",
+            school: "Coursera.org, Johns Hopkins Bloomberg School of Public Health",
+            dates: "October 2014",
+            url: "https://www.coursera.org/account/accomplishments/certificate/BMWAG9PJ3N"
+        },
+
         {
             title: "Front-End Nanodegree",
             school: "Udacity",
@@ -151,15 +164,17 @@ var education = {
             $("#education").append(HTMLschoolStart);
             $(".education-entry:last").append(HTMLonlineTitle.replace("%data%", this.onlineCourses[course].title))
                 .append(HTMLonlineSchool.replace("%data%", this.onlineCourses[course].school))
-                .append(HTMLonlineDates.replace("%data%", this.onlineCourses[course].dates))
-                .append(HTMLonlineURL.replace("%data%", this.onlineCourses[course].url));
+                .append(HTMLonlineDates.replace("%data%", this.onlineCourses[course].dates));
+            if (this.onlineCourses[course].url) {
+                $(".education-entry:last").append(HTMLonlineURL.replace("%data%", this.onlineCourses[course].url));
+            }
         }
 
 
     }
 };
 
-$("main").append(internationalizeButton);
+//$("main").append(internationalizeButton);
 
 function inName(name) {
     var names = name.trim().split(" ");
@@ -169,16 +184,14 @@ function inName(name) {
     return names.join(" ");
 }
 
+$("#mapDiv").append(googleMap);
+
 bio.display();
 work.display();
 projects.display();
 education.display();
 
-$(document).click(function(loc) {
-    // your code goes here
-    console.log(loc.pageX, loc.pageY);
-});
 
 
 
-$("#mapDiv").append(googleMap);
+
