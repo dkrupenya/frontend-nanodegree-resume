@@ -65,7 +65,7 @@ var projects = {
         {
             title: "Front-End Nanodegree Project 1",
             dates: "June 2015",
-            description: "my first HTML page",
+            description: "my first HTML page (HTML5, CSS, Responsive design",
             images: [   "images/p1.png"
                     ]
         },
