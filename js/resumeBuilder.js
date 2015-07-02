@@ -11,25 +11,53 @@ var bio = {
         email: "dkrupenya@gmail.com"
     },
     bioPic: "http://cs403519.vk.me/v403519261/b0f2/eTwwywaVb2Q.jpg",
-    welcome: "Hello, my friend",
-    skills: ["HTML5", "javaScript", "MongoDB", "MeteorJS", "ReactJS", "GIT"]
+    welcome: "Hello, my friends",
+    skills: ["HTML5", "CSS3", "JavaScript", "MongoDB", "MeteorJS", "GIT"],
+    display: function() {
+        $("#header").prepend(HTMLheaderRole.replace("%data%", this.role))
+            .prepend(HTMLheaderName.replace("%data%", this.name))
+            .append(HTMLbioPic.replace("%data%", this.bioPic))
+            .append(HTMLwelcomeMsg.replace("%data%", this.welcome));
+
+        $("#topContacts").append(HTMLmobile.replace("%data%", this.contacts.mobile))
+            .append(HTMLemail.replace("%data%", this.contacts.email))
+            .append(HTMLgithub.replace("%data%", this.contacts.github))
+            .append(HTMLlocation.replace("%data%", this.contacts.location));
+
+        if (this.skills.length > 0) {
+            $("#header").append(HTMLskillsStart);
+            for (skill in this.skills) {
+                $("#skills").append(HTMLskills.replace("%data%", this.skills[skill]));
+            }
+        }
+    }
 };
 //     Work object
 var work = {
     jobs: [
         {   "jobPosition" : "Researcher",
             "employer" : "SPbSU",
-            "yearsWorked" : "10",
+            "yearsWorked" : "2003-2015",
             "employerCyty" : "Saint-Petersburg",
-            "description" : "inorganic chemistry"
+            "description" : "Inorganic and Organometallic chemistry"
         },
-        {   "jobPosition" : "Researcher",
-            "employer" : "SPbSU",
-            "yearsWorked" : "10",
+        {   "jobPosition" : "Junior QA Engineer",
+            "employer" : "GGA St.-Petersburg Development Facility",
+            "yearsWorked" : "2008-2009",
             "employerCyty" : "Saint-Petersburg",
-            "description" : "inorganic chemistry"
+            "description" : "Manual and automatic testing, Selenium, writing test suits and reports, bugtracking system, Jira"
         }
-    ]
+    ],
+    display: function() {
+        for (job in this.jobs) {
+            $("#workExperience").append(HTMLworkStart);
+            $(".work-entry:last").append(HTMLworkEmployer.replace("%data%",this.jobs[job].employer))
+                .append(HTMLworkTitle.replace("%data%", this.jobs[job].jobPosition))
+                .append(HTMLworkDates.replace("%data%", this.jobs[job].yearsWorked))
+                .append(HTMLworkLocation.replace("%data%", this.jobs[job].employerCyty))
+                .append(HTMLworkDescription.replace("%data%", this.jobs[job].description));
+        }
+    }
 };
 //      Projects
 var projects = {
@@ -38,26 +66,24 @@ var projects = {
             title: "Front-End Nanodegree Project 1",
             dates: "June 2015",
             description: "my first HTML page",
-            images: [   "/img/194x148.jpg",
-                        "/img/194x148.jpg"
+            images: [   "images/p1.png"
                     ]
         },
-        {   title: "Front-End Nanodegree Project 1",
+        {   title: "Front-End Nanodegree Project 2",
             dates: "June 2015",
             description: "my first HTML page",
-            images: [   "/img/194x148.jpg",
-                        "/img/194x148.jpg"
-                    ]
+            images: [   "images/p2.png"
+            ]
         }
     ],
     display: function() {
         for (project in this.projects) {
-            $("#projects").append(HTMLprojectStart)
-                .append(HTMLprojectTitle.replace("%data%", this.projects[project].title))
+            $("#projects").append(HTMLprojectStart);
+            $(".project-entry:last").append(HTMLprojectTitle.replace("%data%", this.projects[project].title))
                 .append(HTMLprojectDates.replace("%data%", this.projects[project].dates))
                 .append(HTMLprojectDescription.replace("%data%", this.projects[project].description));
             for (img in this.projects[project].images) {
-                $("#projects").append(HTMLprojectImage.replace("%data%", this.projects[project].images[img]));
+                $(".project-entry:last").append(HTMLprojectImage.replace("%data%", this.projects[project].images[img]));
             }
         }
     }
@@ -70,28 +96,32 @@ var education = {
             "degree": "Certificate of lower secondary education",
             "years": "1984-1992",
             "schoolCity": "Saint-Petersburg",
-            "url": "http://petrischule.spb.ru/"
+            "url": "http://petrischule.spb.ru/",
+            "location": "Санкт-Петербург, улица Малая Конюшенная, д. 5"
         },
         {
             "schoolName": "Academic high school at SPbSU",
             "degree": "Certificate of secondary education",
             "years": "1992-1994",
             "schoolCity": "Saint-Petersburg",
-            "url": "http://agym.spbu.ru/"
+            "url": "http://agym.spbu.ru/",
+            "location": "Санкт-Петербург, Петергоф, Собственный пр., д. 1"
         },
         {
             "schoolName": "Saint-Petersburg State University",
             "degree": "Master degree",
             "years": "1994-2002",
             "schoolCity": "Saint-Petersburg",
-            "url": "http://spbu.ru/"
+            "url": "http://spbu.ru/",
+            "location": "Санкт-Петербург, Петергоф, Университетский пр., д. 26"
         },
         {
             "schoolName": "Saint-Petersburg State University",
             "degree": "PhD in Chemistry",
             "years": "2002-2005",
             "schoolCity": "Saint-Petersburg",
-            "url": "http://spbu.ru/"
+            "url": "http://spbu.ru/",
+            "location": "Санкт-Петербург, Университетская наб., д. 7/9"
         }
     ],
     onlineCourses :[
@@ -107,7 +137,26 @@ var education = {
             dates: "June 2015 - ",
             url: ""
         }
-    ]
+    ],
+    display: function() {
+        for (school in this.schools) {
+            $("#education").append(HTMLschoolStart);
+            $(".education-entry:last").append(HTMLschoolName.replace("%data%", this.schools[school].schoolName))
+                .append(HTMLschoolDegree.replace("%data%", this.schools[school].degree))
+                .append(HTMLschoolDates.replace("%data%", this.schools[school].years))
+                .append(HTMLschoolLocation.replace("%data%", this.schools[school].schoolCity));
+        }
+        $("#education").append(HTMLonlineClasses);
+        for (course in this.onlineCourses) {
+            $("#education").append(HTMLschoolStart);
+            $(".education-entry:last").append(HTMLonlineTitle.replace("%data%", this.onlineCourses[course].title))
+                .append(HTMLonlineSchool.replace("%data%", this.onlineCourses[course].school))
+                .append(HTMLonlineDates.replace("%data%", this.onlineCourses[course].dates))
+                .append(HTMLonlineURL.replace("%data%", this.onlineCourses[course].url));
+        }
+
+
+    }
 };
 
 $("main").append(internationalizeButton);
@@ -120,43 +169,10 @@ function inName(name) {
     return names.join(" ");
 }
 
-$("#header").prepend(HTMLheaderRole.replace("%data%", bio.role))
-    .prepend(HTMLheaderName.replace("%data%", bio.name))
-
-// $("#header").append(HTMLcontactGeneric.replace("%data%", bio.email).replace("%contact%", bio.contact));
-    .append(HTMLmobile.replace("%data%", bio.contacts.mobile))
-    .append(HTMLemail.replace("%data%", bio.contacts.email))
-    .append(HTMLtwitter.replace("%data%", bio.contacts.twitter))
-    .append(HTMLgithub.replace("%data%", bio.contacts.github))
-    .append(HTMLblog.replace("%data%", bio.contacts.blog))
-    .append(HTMLlocation.replace("%data%", bio.contacts.location))
-
-    .append(HTMLbioPic.replace("%data%", bio.picUrl))
-    .append(HTMLwelcomeMsg.replace("%data%", bio.welcome));
-
-// Lesson 2 Flow control
-
-if (bio.skills.length > 0) {
-    $("#header").append(HTMLskillsStart);
-    for (skill in bio.skills) {
-        $("#skills").append(HTMLskills.replace("%data%", bio.skills[skill]));
-    }
-
-
-}
-
-function displayWork() {
-    for (job in work.jobs) {
-        $("#workExperience").append(HTMLworkStart)
-            .append(HTMLworkEmployer.replace("%data%",work.jobs[job].employer))
-            .append(HTMLworkTitle.replace("%data%", work.jobs[job].jobPosition))
-            .append(HTMLworkDates.replace("%data%", work.jobs[job].yearsWorked))
-            .append(HTMLworkLocation.replace("%data%", work.jobs[job].employerCyty))
-            .append(HTMLworkDescription.replace("%data%", work.jobs[job].description));
-    }
-}
-
+bio.display();
+work.display();
 projects.display();
+education.display();
 
 $(document).click(function(loc) {
     // your code goes here
@@ -164,8 +180,5 @@ $(document).click(function(loc) {
 });
 
 
-$("#education").append(HTMLschoolStart)
-    .append(HTMLschoolName.replace("%data%", education.schoolName))
-    .append(HTMLschoolDegree.replace("%data%", education.degree))
-    .append(HTMLschoolDates.replace("%data%", education.years))
-    .append(HTMLschoolLocation.replace("%data%", education.schoolCity));
+
+$("#mapDiv").append(googleMap);
